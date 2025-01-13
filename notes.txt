@@ -1,0 +1,10 @@
+packages used in the virutal environmet:
+flask
+flask-sqlalchemy
+flask-cors
+
+for here we wont create a docker file for it , we would use :
+        if __name__ == "__main__":
+            app.run(debug=True)
+Explanation: the if statement prevents the app.py file from running app.run(debug=True) over and over when it is imported in another file.
+It can only be run with python ./app.py
