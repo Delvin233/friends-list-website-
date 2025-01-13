@@ -2,9 +2,20 @@ packages used in the virutal environmet:
 flask
 flask-sqlalchemy
 flask-cors
+flask-smorest
 
 for here we wont create a docker file for it , we would use :
         if __name__ == "__main__":
             app.run(debug=True)
 Explanation: the if statement prevents the app.py file from running app.run(debug=True) over and over when it is imported in another file.
 It can only be run with python ./app.py
+
+We would have to set our variables in the terminal since we are working in the virtual environmet;
+we do this normally in docker :) (missing docker aleady);
+the codes are : 
+set FLASK_APP = app.py
+set FLASK_ENV = development    
+flask run --reload
+
+We would also use Postman to test our API's: specifically the VSCode extension
+Insomnia can be used as well :)
