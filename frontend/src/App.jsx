@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Stack, Container, Text } from "@chakra-ui/react";
+import Navbar from "./components/ui/Navbar";
+import UserGrid from "./components/ui/UserGrid";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Stack minH={"100vh"}>
+      <Navbar />
+
+      <Container maxW={"1200px"} my={4}>
+        <Text
+          textAlign={"center"}
+          fontWeight={500}
+          fontSize={{ base: "25px", md: "50px" }}
+          letterSpacing={2}
+          mb={8}
+          mt={0}
+        >
+          <Text
+            as={"span"}
+            bgClip={"text"}
+            bgGradient="to-r"
+            gradientFrom="red.400"
+            gradientTo="blue.600"
+          >
+            MY BESTIES
+          </Text>
+          🚀
+        </Text>
+        <UserGrid></UserGrid>
+      </Container>
+    </Stack>
+  );
 }
 
-export default App
+export default App;
