@@ -1,12 +1,22 @@
+import { Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
-import { Container } from "@chakra-ui/react";
-import { Grid } from "@chakra-ui/react";
+import UserCard from "../UserCard";
+import { USERS } from "@/dummy/dummy";
 
 const UserGrid = () => {
   return (
-    <Container maxWidth={"900px"}>
-      <Grid></Grid>
-    </Container>
+    <Grid
+      templateColumns={{
+        base: "1fr",
+        md: "repeat(2 , 1fr)",
+        lg: "repeat(3 , 1fr)",
+      }}
+      gap={10}
+    >
+      {USERS.map((user) => (
+        <UserCard key={user.id} user={user} />
+      ))}
+    </Grid>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { IoIosCreate } from "react-icons/io";
-import { Input, Stack, Textarea, Flex } from "@chakra-ui/react";
+import { Input, Stack, Textarea, Flex, Text } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { HStack } from "@chakra-ui/react";
@@ -33,8 +33,9 @@ const CreateUser = () => {
 
           <PopoverBody>
             <Stack gap="4">
+              <Text fontweight={"bolder"}> New Friend 🧑‍🤝‍🧑</Text>
               <Flex>
-                <Field label="fullname">
+                <Field label="Fullname">
                   <Input placeholder="Bread Mafia" />
                 </Field>
                 <Field label="Role">
@@ -51,12 +52,18 @@ const CreateUser = () => {
                 onValueChange={(e) => setValue(e.value)}
               >
                 <HStack gap="6" mt={1}>
-                  <Radio value="1">male</Radio>
-                  <Radio value="2">female</Radio>
+                  <Radio value="male">male</Radio>
+                  <Radio value="female">female</Radio>
                 </HStack>
               </RadioGroup>
 
-              <Button variant={"surface"} mr={0}>
+              <Button
+                variant={"ghost"}
+                bgGradient="to-r"
+                gradientFrom="red.400"
+                gradientTo="blue.600"
+                fontweight={"bolder"}
+              >
                 Add
               </Button>
             </Stack>
