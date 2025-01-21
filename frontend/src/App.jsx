@@ -1,11 +1,15 @@
 import { Stack, Container, Text } from "@chakra-ui/react";
 import Navbar from "./components/ui/Navbar";
 import UserGrid from "./components/ui/UserGrid";
+import { useState } from "react";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  //  the set users was done in the App.jsx file because it would be used in the nav bar as well
+
   return (
     <Stack minH={"100vh"}>
-      <Navbar />
+      <Navbar setUsers={setUsers} />
 
       <Container maxW={"1200px"} my={4}>
         <Text
@@ -27,7 +31,7 @@ function App() {
           </Text>
           🚀
         </Text>
-        <UserGrid />
+        <UserGrid users={users} setUsers={setUsers} />
       </Container>
     </Stack>
   );

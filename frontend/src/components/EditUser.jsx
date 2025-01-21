@@ -47,17 +47,9 @@ const EditUser = () => {
               <Field label="Description">
                 <Textarea placeholder="He likes to do dance" />
               </Field>
-              <Flex gap={4} justifyContent={"center"}>
+              <Flex flex={1}>
                 <Button variant={"surface"} mr={0} colorPalette="yellow">
                   Edit
-                </Button>
-                <Button
-                  variant={"surface"}
-                  mr={0}
-                  colorPalette="none"
-                  onClick={onClose}
-                >
-                  Cancel
                 </Button>
               </Flex>
             </Stack>

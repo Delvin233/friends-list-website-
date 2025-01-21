@@ -3,6 +3,7 @@ flask
 flask-sqlalchemy
 flask-cors
 flask-smorest
+NB: for the virtual environmet to activate, you have to source it: source .venv/bin/activate
 
 for here we wont create a docker file for it , we would use :
         if __name__ == "__main__":
@@ -11,7 +12,7 @@ Explanation: the if statement prevents the app.py file from running app.run(debu
 It can only be run with python ./app.py
 
 We would have to set our variables in the terminal since we are working in the virtual environmet;
-we do this normally in docker :) (missing docker aleady);
+we do this normally in docker :) (missing docker already);
 the codes are : 
 set FLASK_APP = app.py
 set FLASK_ENV = development    
