@@ -3,6 +3,7 @@ import Navbar from "./components/ui/Navbar";
 import UserGrid from "./components/ui/UserGrid";
 import { useState } from "react";
 
+export const BASE_URL = "http://127.0.0.1:5000/api/";
 function App() {
   const [users, setUsers] = useState([]);
   //  the set users was done in the App.jsx file because it would be used in the nav bar as well

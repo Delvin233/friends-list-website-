@@ -17,7 +17,7 @@ import routes  # though routes isnt called in this file, we import it so that we
 
 # the import is placed here to prevent a cycle error when importing, since it is partially initualized( since we didnt use it :))
 
-# we then create a contect in the backgrougn and all the tables we would use in a db
+# we then create a context in the backgroung and all the tables we would use in a db
 with app.app_context():
     db.create_all()
 
