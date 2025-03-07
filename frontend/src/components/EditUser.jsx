@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/popover";
 
 const EditUser = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure(); // useDisclosure has depriciated
   return (
     <>
       <PopoverRoot>

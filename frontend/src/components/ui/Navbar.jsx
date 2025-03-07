@@ -5,7 +5,7 @@ import { useColorMode, useColorModeValue } from "@/components/ui/color-mode";
 import { FaUserFriends } from "react-icons/fa";
 import CreateUser from "../CreateUser";
 
-const Navbar = () => {
+const Navbar = ({ setUsers }) => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <Container maxW={"900px"}>
@@ -51,7 +51,7 @@ const Navbar = () => {
             <IconButton onClick={toggleColorMode} variant="outline" size="sm">
               {colorMode === "light" ? <LuSun /> : <LuMoon />}
             </IconButton>
-            <CreateUser />
+            <CreateUser setUsers={setUsers} />
           </Flex>
         </Flex>
       </Box>

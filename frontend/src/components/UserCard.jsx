@@ -3,27 +3,54 @@ import { Avatar } from "@/components/ui/avatar";
 import React from "react";
 import { CiSquareRemove } from "react-icons/ci";
 import EditUser from "./EditUser";
+import { BASE_URL } from "@/App";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, setUsers }) => {
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(BASE_URL + "friends/" + user.identification, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error);
+      }
+
+      setUsers((prevUsers) =>
+        prevUsers.filter((u) => u.id !== user.identification)
+      );
+      // toast from Chakra ui hasnt been configured well by me :( so lets use alerts like that
+      alert("success");
+    } catch (error) {
+      alert("error");
+    }
+  };
   return (
     <Card.Root>
       <Card.Body>
         <Flex>
           <Flex flex={1} gap={4} alignItems={"center"} mb={3}>
-            <Avatar src="https://avatar.iran.liara.run/public" />
+            <Avatar src={user.imgUrl} />
             <Span>
               <Strong>{user.name}</Strong>
               <Text>{user.role}</Text>
             </Span>
           </Flex>
           <EditUser />
-          <IconButton variant={"ghost"} colorPalette={"red"} size={"lg"}>
+          <IconButton
+            variant={"ghost"}
+            colorPalette={"red"}
+            size={"lg"}
+            onClick={handleDelete}
+          >
             <CiSquareRemove />
           </IconButton>
         </Flex>
 
         <Card.Description>
-          <Text color="fg">{user.description}</Text>
+          <Text color="">{user.description}</Text>
         </Card.Description>
       </Card.Body>
     </Card.Root>

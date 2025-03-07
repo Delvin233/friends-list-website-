@@ -8,6 +8,7 @@ import {
   Flex,
   Text,
   useDisclosure,
+  Toaster,
 } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
@@ -24,9 +25,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { BASE_URL } from "@/App";
+import { toaster } from "./ui/toaster";
 
-const CreateUser = () => {
-  // const [open, onOpen, onClose] = useDisclosure();
+const CreateUser = ({ setUsers }) => {
+  <Toaster />;
+
+  // const [open, onOpen, onClose] = useDisclosure(); no more on chakra ui
   const [isLoading, setisLoading] = useState(false);
   const [inputs, setInputs] = useState({
     name: "",
@@ -34,39 +38,42 @@ const CreateUser = () => {
     description: "",
     gender: "",
   });
-  const toast = createToaster();
 
   const handleCreateUser = async (e) => {
     e.preventDefault(); // prevent page refresh
     setisLoading(true);
     try {
-      const res = await fetch(BASE_URL + "/friends", {
+      const res = await fetch(BASE_URL + "friends", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(inputs),
       });
+
       const data = await res.json();
+
       if (!res.ok) {
         throw new Error(data.error);
-      }
-      toast({
-        status: "success",
-        title: "Nice!",
-        description: "Friend Added Successfully.",
-        duration: 2000,
-        position: "top-center",
-      });
+      } else alert("success");
+      //toaster.create({
+      // type: "success",
+      //title: "Nice!",
+      //description: "Friend Added Successfully.",
+      //duration: 2000,
+      //position: "top-end",
+      // });
       //onClose();
+      setUsers((prevUsers) => [...prevUsers, data]);
     } catch (error) {
-      toast({
-        status: "error",
-        title: "An error occured.!",
-        description: error.message,
-        duration: 4000,
-        position: "top-center",
-      });
+      alert("error");
+      //toaster.create({
+      //type: "error",
+      //title: "An error occured.!",
+      //description: error.message,
+      //duration: 2000,
+      //position: "top-end",
+      //});
     } finally {
       setisLoading(false);
       setInputs({
@@ -90,8 +97,8 @@ const CreateUser = () => {
         <PopoverContent bg="white.200" fontweight={"bold"}>
           <PopoverArrow />
 
-          <PopoverBody>
-            <form onSubmit={handleCreateUser()}>
+          <form onSubmit={handleCreateUser}>
+            <PopoverBody>
               <Stack gap="4">
                 <Text fontweight={"bolder"}> New Friend 🧑‍🤝‍🧑</Text>
                 <Flex>
@@ -126,8 +133,8 @@ const CreateUser = () => {
                 </Field>
 
                 <RadioGroup
-                  value={value}
-                  onValueChange={(e) => setValue(e.value)}
+                //value={value}
+                //onValueChange={(e) => setValue(e.value)}
                 >
                   <HStack gap="6" mt={1}>
                     <Radio
@@ -161,8 +168,9 @@ const CreateUser = () => {
                   Add
                 </Button>
               </Stack>
-            </form>
-          </PopoverBody>
+            </PopoverBody>
+          </form>
+
           <PopoverCloseTrigger />
         </PopoverContent>
       </PopoverRoot>

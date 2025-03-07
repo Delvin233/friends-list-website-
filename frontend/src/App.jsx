@@ -1,4 +1,4 @@
-import { Stack, Container, Text } from "@chakra-ui/react";
+import { Stack, Container, Text, Toaster } from "@chakra-ui/react";
 import Navbar from "./components/ui/Navbar";
 import UserGrid from "./components/ui/UserGrid";
 import { useState } from "react";
