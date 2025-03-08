@@ -20,3 +20,9 @@ flask run --reload
 
 We would also use Postman to test our API's: specifically the VSCode extension
 Insomnia can be used as well :)
+
+
+
+we create a wsgi.py file as required by the deployment site
+
+pip3 freeze > requirements.txt is used to instantly produce the imports used in the app.py
