@@ -19,7 +19,7 @@ const UserCard = ({ user, setUsers }) => {
       }
 
       setUsers((prevUsers) =>
-        prevUsers.filter((u) => u.id !== user.identification)
+        prevUsers.filter((u) => u.identification !== user.identification)
       );
       // toast from Chakra ui hasnt been configured well by me :( so lets use alerts like that
       alert("success");
@@ -38,7 +38,9 @@ const UserCard = ({ user, setUsers }) => {
               <Text>{user.role}</Text>
             </Span>
           </Flex>
-          <EditUser />
+
+          <EditUser user={user} setUsers={setUsers} />
+
           <IconButton
             variant={"ghost"}
             colorPalette={"red"}

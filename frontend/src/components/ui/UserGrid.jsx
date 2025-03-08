@@ -48,14 +48,15 @@ const UserGrid = ({ users, setUsers }) => {
           />
         </Flex>
       )}
-      {isLoading && users.length === 0 && (
-        <Flex justifyContent={"center"}>
-          <Text size={"xl"} mt={20}>
-            {" "}
-            No friends available
-          </Text>
-        </Flex>
-      )}
+      {isLoading ||
+        (users.length === 0 && (
+          <Flex justifyContent={"center"}>
+            <Text size={"xl"} mt={20}>
+              {" "}
+              No friends available
+            </Text>
+          </Flex>
+        ))}
     </>
   );
 };

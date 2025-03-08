@@ -32,7 +32,10 @@ def create_friend():
         # required fields for the user to input
         required_fields = ["name", "gender"]
         for required in required_fields:
-            if required not in friend_data:
+            if required not in friend_data or not friend_data.get(
+                required
+            ):  # throw an error if the required fields arent filled or if the fields are all empty
+
                 return jsonify({"error": f"{required} required."})
         # we pass data data requested into the respective module
         name = friend_data.get("name")

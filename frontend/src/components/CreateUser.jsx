@@ -55,7 +55,14 @@ const CreateUser = ({ setUsers }) => {
 
       if (!res.ok) {
         throw new Error(data.error);
-      } else alert("success");
+      }
+      alert("success");
+      setInputs({
+        name: "",
+        role: "",
+        description: "",
+        gender: "",
+      }); // clear inputs
       //toaster.create({
       // type: "success",
       //title: "Nice!",
@@ -76,12 +83,6 @@ const CreateUser = ({ setUsers }) => {
       //});
     } finally {
       setisLoading(false);
-      setInputs({
-        name: "",
-        role: "",
-        description: "",
-        gender: "",
-      }); // clear inputs
     }
   };
 
